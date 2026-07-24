@@ -102,6 +102,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -363,6 +366,93 @@ function RootComponent() {
           </div>
         </div>
       )}
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href="https://wa.me/919427882733?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20admissions%20at%20Shree%20Haridarshan%20Vidya%20Sankul."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat on WhatsApp"
+        style={{
+          position: "fixed",
+          bottom: "28px",
+          right: "28px",
+          zIndex: 9997,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: "58px",
+          height: "58px",
+          borderRadius: "50%",
+          backgroundColor: "#25D366",
+          boxShadow: "0 4px 24px rgba(37,211,102,0.45)",
+          textDecoration: "none",
+          transition: "transform 0.2s ease, box-shadow 0.2s ease",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1.12)";
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 8px 32px rgba(37,211,102,0.6)";
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLAnchorElement).style.transform = "scale(1)";
+          (e.currentTarget as HTMLAnchorElement).style.boxShadow = "0 4px 24px rgba(37,211,102,0.45)";
+        }}
+      >
+        {/* Pulse ring */}
+        <span
+          style={{
+            position: "absolute",
+            width: "58px",
+            height: "58px",
+            borderRadius: "50%",
+            backgroundColor: "rgba(37,211,102,0.35)",
+            animation: "whatsapp-pulse 2s ease-out infinite",
+          }}
+        />
+        {/* WhatsApp SVG icon */}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          width="30"
+          height="30"
+          fill="white"
+          style={{ position: "relative", zIndex: 1 }}
+        >
+          <path d="M16 0C7.163 0 0 7.163 0 16c0 2.822.736 5.472 2.025 7.776L0 32l8.469-2.003A15.934 15.934 0 0 0 16 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.27 13.27 0 0 1-6.77-1.854l-.485-.289-5.027 1.188 1.21-4.898-.316-.503A13.267 13.267 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.274-9.874c-.398-.199-2.355-1.162-2.72-1.295-.364-.133-.629-.199-.894.199-.265.398-1.027 1.295-1.259 1.561-.232.265-.464.299-.862.1-.398-.199-1.681-.619-3.203-1.977-1.184-1.057-1.983-2.363-2.215-2.761-.232-.398-.025-.613.174-.811.179-.179.398-.464.597-.696.199-.232.265-.398.398-.663.133-.265.066-.497-.033-.696-.099-.199-.894-2.155-1.225-2.951-.323-.774-.651-.669-.894-.681-.232-.011-.497-.014-.762-.014s-.696.099-.1060.497c-.364.398-1.393 1.361-1.393 3.317 0 1.956 1.426 3.847 1.625 4.112.199.265 2.807 4.284 6.802 6.007.951.41 1.693.655 2.272.838.954.303 1.823.26 2.509.158.765-.114 2.355-.963 2.687-1.893.332-.93.332-1.727.232-1.893-.099-.166-.364-.265-.762-.464z" />
+        </svg>
+        {/* Tooltip */}
+        <span
+          style={{
+            position: "absolute",
+            right: "68px",
+            bottom: "50%",
+            transform: "translateY(50%)",
+            backgroundColor: "#1a1a1a",
+            color: "#fff",
+            fontSize: "12px",
+            fontWeight: 600,
+            padding: "5px 10px",
+            borderRadius: "8px",
+            whiteSpace: "nowrap",
+            pointerEvents: "none",
+            opacity: 0,
+            transition: "opacity 0.2s ease",
+          }}
+          className="whatsapp-tooltip"
+        >
+          Chat with us
+        </span>
+        <style>{`
+          @keyframes whatsapp-pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            70% { transform: scale(1.6); opacity: 0; }
+            100% { transform: scale(1.6); opacity: 0; }
+          }
+          a:hover .whatsapp-tooltip {
+            opacity: 1 !important;
+          }
+        `}</style>
+      </a>
 
       <SiteHeader />
       <main className="min-h-screen">

@@ -1,12 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MapPin, Phone, Youtube } from "lucide-react";
+import { Facebook, Instagram, MapPin, Phone, Mail, Globe } from "lucide-react";
 import logo from "@/assets/haridarshan_crest_transparent.png";
 
 export function SiteFooter() {
   return (
-    <footer className="bg-ink text-cream/85 mt-24">
+    <footer className="bg-ink text-cream/85 mt-24 border-t border-cream/10">
       <div className="container-page py-16 grid gap-12 md:grid-cols-4">
-        <div className="md:col-span-2 max-w-sm">
+        <div className="md:col-span-2 max-w-md">
           <Link
             to="/"
             onClick={() => {
@@ -25,24 +25,40 @@ export function SiteFooter() {
               <div className="font-display text-cream text-lg font-semibold">
                 Shree Haridarshan Vidya Sankul
               </div>
-              <div className="font-gujarati text-cream/70 text-sm">શ્રી હરિદર્શન વિદ્યા સંકુલ</div>
+              <div className="font-gujarati text-accent text-xs">
+                જ્યાં છે જ્ઞાનનો સૂર્યોદય, સાથે સંસ્કારની છાયા.
+              </div>
             </div>
           </Link>
-          <p className="mt-5 text-sm leading-relaxed text-cream/70">
-            Nurturing young minds since 2000 through academic excellence, discipline, values and
-            holistic development in the heart of Rajkot.
+          <p className="mt-4 text-sm leading-relaxed text-cream/70">
+            Serving continuously since 2000 at very affordable fees. STD: KG to 12th (Arts & Commerce) + Shree Juniors. Dedicated to holistic education, national sports coaching, and 6000+ library resources in Mavdi, Rajkot.
           </p>
+
+          <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold text-cream/80">
+            <span className="bg-white/10 px-2.5 py-1 rounded">SHVS (Est. 2000)</span>
+            <span className="bg-accent/20 text-accent px-2.5 py-1 rounded">Shree Juniors</span>
+            <span className="bg-white/10 px-2.5 py-1 rounded">Gyan Sadhana (Est. 1995)</span>
+          </div>
+
           <div className="mt-6 flex gap-3">
-            {[Facebook, Instagram, Youtube].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social link"
-                className="h-10 w-10 rounded-full border border-cream/20 grid place-items-center hover:bg-primary hover:border-primary transition"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook: Shree Haridarshan School"
+              className="h-10 w-10 rounded-full border border-cream/20 grid place-items-center hover:bg-primary hover:border-primary transition"
+            >
+              <Facebook className="h-4 w-4 text-cream" />
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram: @shreeharidarshanschool"
+              className="h-10 w-10 rounded-full border border-cream/20 grid place-items-center hover:bg-primary hover:border-primary transition"
+            >
+              <Instagram className="h-4 w-4 text-cream" />
+            </a>
           </div>
         </div>
 
@@ -50,15 +66,15 @@ export function SiteFooter() {
           <div className="text-cream font-display font-semibold mb-4">Quick Links</div>
           <ul className="space-y-2 text-sm">
             {[
-              ["/about", "About Us"],
-              ["/academics", "Academics"],
-              ["/facilities", "Facilities"],
-              ["/gallery", "Gallery"],
-              ["/admissions", "Admissions"],
-              ["/contact", "Contact"],
+              ["/about", "About Us & Leadership"],
+              ["/academics", "Academics & Unit Tests"],
+              ["/facilities", "6000+ Books & Facilities"],
+              ["/gallery", "Gallery & Activities"],
+              ["/admissions", "Admissions 2026-27"],
+              ["/contact", "Contact & Location"],
             ].map(([to, label]) => (
               <li key={to}>
-                <Link to={to} className="hover:text-cream transition-colors">
+                <Link to={to} className="hover:text-accent transition-colors">
                   {label}
                 </Link>
               </li>
@@ -71,7 +87,7 @@ export function SiteFooter() {
           <ul className="space-y-3 text-sm">
             <li className="flex gap-3">
               <MapPin className="h-4 w-4 mt-0.5 text-accent shrink-0" />
-              <span>Mavdi Bypass Road, Madhav Park, Mavdi Village, Rajkot, Gujarat 360004</span>
+              <span>80 Ft Mavdi Bypass Road, Near Bapasitaram Chowk, Mavdi, Rajkot, Gujarat</span>
             </li>
             <li className="flex gap-3">
               <Phone className="h-4 w-4 mt-0.5 text-accent shrink-0" />
@@ -79,14 +95,20 @@ export function SiteFooter() {
                 +91 94278 82733
               </a>
             </li>
+            <li className="flex gap-3">
+              <Mail className="h-4 w-4 mt-0.5 text-accent shrink-0" />
+              <a href="mailto:haridarshanschool@gmail.com" className="hover:text-cream">
+                haridarshanschool@gmail.com
+              </a>
+            </li>
           </ul>
           <a
-            href="https://maps.google.com/?q=Shree+Haridarshan+School+Mavdi+Bypass+Road+Rajkot"
+            href="https://maps.google.com/?q=Shree+Haridarshan+Vidya+Sankul+Mavdi+Bypass+Road+Rajkot"
             target="_blank"
             rel="noreferrer"
             className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:underline"
           >
-            View on Google Maps →
+            Google Maps Location →
           </a>
         </div>
       </div>

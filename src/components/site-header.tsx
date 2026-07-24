@@ -49,8 +49,8 @@ export function SiteHeader() {
               Admissions Open
             </span>
             <span className="font-semibold text-cream/90 flex items-center gap-1">
-              <Sparkles className="h-3 w-3 text-accent animate-pulse" /> Class Nursery to XII
-              (Science & Commerce) for 2026-27
+              <Sparkles className="h-3 w-3 text-accent animate-pulse" /> STD: Playgroup to 12th
+              (Arts & Commerce) for 2026-27
             </span>
           </div>
           <div className="hidden md:flex items-center gap-4 text-cream/80 font-medium">

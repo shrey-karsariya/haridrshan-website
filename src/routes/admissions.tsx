@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/page-header";
+import { ScrollReveal } from "@/components/scroll-reveal";
+import admissionsHeaderBg from "@/assets/admissions_header_bg.png";
 import { useState } from "react";
 import { ArrowRight, HelpCircle, ChevronDown, Check } from "lucide-react";
 
@@ -77,76 +79,87 @@ function AdmissionsPage() {
         eyebrow="Admissions Open 2026-27"
         title="A simple, transparent admissions process."
         subtitle="We guide you step-by-step to welcome your child into our academic family with minimal hassle."
+        bgImage={admissionsHeaderBg}
       />
 
       <section className="section-pad">
         <div className="container-page space-y-24">
           {/* Eligibility Calculator */}
-          <div>
-            <div className="max-w-3xl mx-auto text-center space-y-4 mb-10">
-              <span className="eyebrow justify-center">
-                <span className="h-px w-8 bg-primary" /> Grade Check{" "}
-                <span className="h-px w-8 bg-primary" />
-              </span>
-              <h2 className="font-display text-4xl font-extrabold text-foreground">
-                Calculate Child's Grade Eligibility
-              </h2>
+          <ScrollReveal variant="fade-up">
+            <div>
+              <div className="max-w-3xl mx-auto text-center space-y-4 mb-10">
+                <span className="eyebrow justify-center">
+                  <span className="h-px w-8 bg-primary" /> Grade Check{" "}
+                  <span className="h-px w-8 bg-primary" />
+                </span>
+                <h2 className="font-display text-4xl font-extrabold text-foreground">
+                  Calculate Child's Grade Eligibility
+                </h2>
+              </div>
+              <EligibilityCalculator />
             </div>
-            <EligibilityCalculator />
-          </div>
+          </ScrollReveal>
 
           {/* Stepper Steps */}
           <div>
-            <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-              <span className="eyebrow justify-center">
-                <span className="h-px w-8 bg-primary" /> Steps to Apply{" "}
-                <span className="h-px w-8 bg-primary" />
-              </span>
-              <h2 className="font-display text-4xl font-extrabold text-foreground">
-                Five simple milestones to enroll.
-              </h2>
-            </div>
+            <ScrollReveal variant="fade-up">
+              <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
+                <span className="eyebrow justify-center">
+                  <span className="h-px w-8 bg-primary" /> Steps to Apply{" "}
+                  <span className="h-px w-8 bg-primary" />
+                </span>
+                <h2 className="font-display text-4xl font-extrabold text-foreground">
+                  Five simple milestones to enroll.
+                </h2>
+              </div>
+            </ScrollReveal>
 
             <div className="relative border-l-2 border-accent/40 max-w-3xl mx-auto pl-8 space-y-12">
               {steps.map((s, idx) => (
-                <div key={idx} className="relative group">
-                  {/* Dot */}
-                  <span className="absolute -left-12 top-1.5 h-8 w-8 rounded-full bg-primary border-4 border-background flex items-center justify-center font-display font-extrabold text-cream text-xs shadow-[var(--shadow-soft)]">
-                    {s.n}
-                  </span>
-                  <div className="bg-card border border-border rounded-2xl p-6 shadow-[var(--shadow-soft)] group-hover:border-primary/20 transition-all duration-300">
-                    <h3 className="font-display font-extrabold text-lg text-foreground">
-                      {s.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <ScrollReveal key={idx} variant="fade-up" staggerIndex={idx} staggerStep={100}>
+                  <div className="relative group">
+                    {/* Dot */}
+                    <span className="absolute -left-12 top-1.5 h-8 w-8 rounded-full bg-primary border-4 border-background flex items-center justify-center font-display font-extrabold text-cream text-xs shadow-[var(--shadow-soft)]">
+                      {s.n}
+                    </span>
+                    <div className="bg-card border border-border rounded-2xl p-6 shadow-[var(--shadow-soft)] group-hover:border-primary/20 transition-all duration-300">
+                      <h3 className="font-display font-extrabold text-lg text-foreground">
+                        {s.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                    </div>
                   </div>
-                </div>
+                </ScrollReveal>
               ))}
             </div>
           </div>
 
           {/* FAQs Accordion */}
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center space-y-4 mb-12">
-              <span className="eyebrow justify-center">
-                <span className="h-px w-8 bg-primary" /> FAQ Section{" "}
-                <span className="h-px w-8 bg-primary" />
-              </span>
-              <h2 className="font-display text-4xl font-extrabold text-foreground">
-                Frequently Asked Questions
-              </h2>
-            </div>
+          <ScrollReveal variant="zoom-in">
+            <div className="max-w-3xl mx-auto">
+              <div className="text-center space-y-4 mb-12">
+                <span className="eyebrow justify-center">
+                  <span className="h-px w-8 bg-primary" /> FAQ Section{" "}
+                  <span className="h-px w-8 bg-primary" />
+                </span>
+                <h2 className="font-display text-4xl font-extrabold text-foreground">
+                  Frequently Asked Questions
+                </h2>
+              </div>
 
-            <FaqAccordion />
-          </div>
+              <FaqAccordion />
+            </div>
+          </ScrollReveal>
 
           {/* CTA Link */}
-          <div className="text-center">
-            <Link to="/contact" className="btn-hero group">
-              Start Admissions Inquiry{" "}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
+          <ScrollReveal variant="fade-up">
+            <div className="text-center">
+              <Link to="/contact" className="btn-hero group">
+                Start Admissions Inquiry{" "}
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </>
@@ -154,154 +167,87 @@ function AdmissionsPage() {
 }
 
 function EligibilityCalculator() {
-  const [birthDate, setBirthDate] = useState("");
-  const [result, setResult] = useState<string | null>(null);
-  const [eligible, setEligible] = useState(false);
+  const [birthYear, setBirthYear] = useState<number>(2020);
 
-  const calculateEligibility = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!birthDate) return;
-
-    const birth = new Date(birthDate);
-    const targetDate = new Date("2026-06-01"); // June 1st of the academic year
-
-    let age = targetDate.getFullYear() - birth.getFullYear();
-    const monthDiff = targetDate.getMonth() - birth.getMonth();
-    if (monthDiff < 0 || (monthDiff === 0 && targetDate.getDate() < birth.getDate())) {
-      age--;
-    }
-
-    let eligibleGrade = "";
-    let isOk = false;
-
-    if (age < 3) {
-      eligibleGrade = "Too young for Nursery. (Minimum age is 3 years by June 1st, 2026).";
-    } else if (age === 3) {
-      eligibleGrade = "Nursery (Playgroup)";
-      isOk = true;
-    } else if (age === 4) {
-      eligibleGrade = "LKG (Junior KG)";
-      isOk = true;
-    } else if (age === 5) {
-      eligibleGrade = "UKG (Senior KG)";
-      isOk = true;
-    } else if (age === 6) {
-      eligibleGrade = "Grade I (Primary)";
-      isOk = true;
-    } else if (age === 7) {
-      eligibleGrade = "Grade II";
-      isOk = true;
-    } else if (age === 8) {
-      eligibleGrade = "Grade III";
-      isOk = true;
-    } else if (age === 9) {
-      eligibleGrade = "Grade IV";
-      isOk = true;
-    } else if (age === 10) {
-      eligibleGrade = "Grade V";
-      isOk = true;
-    } else if (age === 11) {
-      eligibleGrade = "Grade VI (Secondary)";
-      isOk = true;
-    } else if (age === 12) {
-      eligibleGrade = "Grade VII";
-      isOk = true;
-    } else if (age === 13) {
-      eligibleGrade = "Grade VIII";
-      isOk = true;
-    } else if (age === 14) {
-      eligibleGrade = "Grade IX";
-      isOk = true;
-    } else if (age === 15) {
-      eligibleGrade = "Grade X";
-      isOk = true;
-    } else if (age === 16) {
-      eligibleGrade = "Grade XI (Higher Secondary - Science/Commerce)";
-      isOk = true;
-    } else if (age === 17) {
-      eligibleGrade = "Grade XII (Science/Commerce)";
-      isOk = true;
-    } else {
-      eligibleGrade = "High School Graduate (Age 18+). Please contact school admin.";
-      isOk = false;
-    }
-
-    setEligible(isOk);
-    if (isOk) {
-      setResult(`Your child is eligible for: ${eligibleGrade}`);
-    } else {
-      setResult(eligibleGrade);
-    }
+  const getEligibleGrade = (year: number) => {
+    const age = 2026 - year;
+    if (age < 3) return "Too young for Nursery (Minimum age 3)";
+    if (age === 3) return "Nursery / Playgroup";
+    if (age === 4) return "Junior KG (Jr. KG)";
+    if (age === 5) return "Senior KG (Sr. KG)";
+    if (age === 6) return "Grade 1 (Primary)";
+    if (age === 7) return "Grade 2 (Primary)";
+    if (age === 8) return "Grade 3 (Primary)";
+    if (age === 9) return "Grade 4 (Primary)";
+    if (age === 10) return "Grade 5 (Primary)";
+    if (age === 11) return "Grade 6 (Secondary)";
+    if (age === 12) return "Grade 7 (Secondary)";
+    if (age === 13) return "Grade 8 (Secondary)";
+    if (age === 14) return "Grade 9 (Secondary)";
+    if (age === 15) return "Grade 10 (SSC Board)";
+    if (age === 16) return "Grade 11 (Arts & Commerce)";
+    if (age === 17) return "Grade 12 (HSC Board)";
+    return "Eligible for Higher Education Counseling";
   };
 
   return (
-    <div className="bg-card rounded-3xl border border-border p-6 md:p-8 shadow-[var(--shadow-soft)] max-w-xl mx-auto hover:border-primary/10 transition-colors">
-      <p className="text-xs text-muted-foreground text-center mb-6">
-        Enter your child's date of birth to check eligible grade for the 2026-27 academic term.
-      </p>
-      <form onSubmit={calculateEligibility} className="space-y-4">
-        <div>
-          <label className="text-xs font-extrabold uppercase tracking-wider text-foreground block mb-2">
-            Child's Birth Date
-          </label>
-          <input
-            type="date"
-            required
-            value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
-            className="w-full rounded-xl border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-          />
+    <div className="bg-card rounded-3xl p-8 border border-border shadow-[var(--shadow-soft)] max-w-xl mx-auto text-center space-y-6">
+      <label htmlFor="birthYearSelect" className="block text-sm font-bold text-foreground">
+        Select Child's Birth Year:
+      </label>
+      <select
+        id="birthYearSelect"
+        value={birthYear}
+        onChange={(e) => setBirthYear(Number(e.target.value))}
+        className="w-full max-w-xs px-4 py-3 rounded-xl border border-border bg-background text-foreground font-bold focus:outline-none focus:ring-2 focus:ring-primary text-center"
+      >
+        {Array.from({ length: 18 }, (_, i) => 2024 - i).map((y) => (
+          <option key={y} value={y}>
+            {y}
+          </option>
+        ))}
+      </select>
+
+      <div className="p-6 rounded-2xl bg-cream-deep/60 border border-border">
+        <div className="text-xs uppercase font-extrabold text-accent tracking-wider">
+          Recommended Grade for 2026-27:
         </div>
-        <button type="submit" className="btn-hero w-full justify-center">
-          Calculate Eligibility
-        </button>
-      </form>
-      {result && (
-        <div
-          className={`mt-6 p-4 rounded-xl text-center text-sm font-bold border animate-fade-up ${
-            eligible
-              ? "bg-primary/10 border-primary/20 text-foreground"
-              : "bg-destructive/10 border-destructive/20 text-destructive-foreground"
-          }`}
-        >
-          {eligible && <Check className="h-4 w-4 inline mr-2 text-primary" />}
-          {result}
+        <div className="text-2xl font-display font-extrabold text-primary mt-1">
+          {getEligibleGrade(birthYear)}
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 function FaqAccordion() {
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-border rounded-3xl border border-border bg-card overflow-hidden shadow-[var(--shadow-soft)]">
-      {faqs.map((f, idx) => {
-        const isOpen = openIdx === idx;
+    <div className="space-y-4">
+      {faqs.map((f, i) => {
+        const isOpen = openIdx === i;
         return (
-          <div key={idx} className="group">
+          <div
+            key={i}
+            className="bg-card rounded-2xl border border-border overflow-hidden transition-colors"
+          >
             <button
-              onClick={() => setOpenIdx(isOpen ? null : idx)}
-              className="flex w-full cursor-pointer items-center justify-between p-6 text-left font-display font-extrabold text-foreground transition hover:bg-cream-deep/20"
+              onClick={() => setOpenIdx(isOpen ? null : i)}
+              className="w-full p-6 text-left font-display font-extrabold text-foreground flex items-center justify-between gap-4 focus:outline-none"
             >
-              <span className="flex items-center gap-3">
-                <HelpCircle className="h-5 w-5 text-accent shrink-0" />
-                {f.q}
-              </span>
+              <span>{f.q}</span>
               <ChevronDown
-                className={`ml-4 text-primary transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                className={`h-5 w-5 text-primary shrink-0 transition-transform duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
               />
             </button>
-            <div
-              className={`overflow-hidden transition-all duration-300 ${
-                isOpen ? "max-h-[300px] border-t border-border" : "max-h-0"
-              }`}
-            >
-              <p className="p-6 text-sm text-muted-foreground leading-relaxed bg-cream-deep/10">
+            {isOpen && (
+              <div className="px-6 pb-6 text-sm text-muted-foreground leading-relaxed border-t border-border/50 pt-4">
                 {f.a}
-              </p>
-            </div>
+              </div>
+            )}
           </div>
         );
       })}

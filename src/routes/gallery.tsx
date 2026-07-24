@@ -1,29 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/page-header";
+import { ScrollReveal } from "@/components/scroll-reveal";
+import galleryHeaderBg from "@/assets/gallery_header_bg.png";
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import a from "@/assets/life-science.jpg";
-import b from "@/assets/life-dance.jpg";
-import c from "@/assets/life-sports.jpg";
-import d from "@/assets/life-art.jpg";
-import e from "@/assets/life-yoga.jpg";
-import f from "@/assets/facility-library.jpg";
-import g from "@/assets/facility-computer.jpg";
-import h from "@/assets/about-students.jpg";
-import i from "@/assets/hero-campus.jpg";
+import lifeScience from "@/assets/life-science.png";
+import lifeDance from "@/assets/life-dance.png";
+import lifeSports from "@/assets/life-sports.png";
+import lifeArt from "@/assets/life-art.png";
+import lifeYoga from "@/assets/life-yoga.png";
+import facilityLibrary from "@/assets/facility-library.jpg";
+import facilityComputer from "@/assets/facility-computer.jpg";
+import facilityScience from "@/assets/facility_science_lab.png";
+import facilityBus from "@/assets/facility_bus.png";
+import aboutStudents from "@/assets/about-students.jpg";
+import aboutRealistic from "@/assets/about_students_realistic.png";
+import heroCampus from "@/assets/hero-campus.jpg";
+import secondaryLabNew from "@/assets/secondary_section_lab.png";
+import higherSecondaryClassroomNew from "@/assets/higher_secondary_classroom.png";
+import hscResult from "@/assets/hsc result.png";
+import sscResult from "@/assets/ssc result.png";
 
-const categories = ["All", "Campus", "Events", "Sports", "Activities"] as const;
+const categories = ["All", "Board Results", "Campus", "Facilities", "Sports", "Activities & Events", "Field Visits"] as const;
 
 const tiles = [
-  { src: i, label: "Main School Campus Hub", category: "Campus" },
-  { src: b, label: "Annual Cultural Function Dance", category: "Events" },
-  { src: c, label: "Primary Inter-School Cricket Net Practice", category: "Sports" },
-  { src: h, label: "Modern Smart Classrooms Lecture", category: "Campus" },
-  { src: a, label: "Experiential Science Fair Project", category: "Activities" },
-  { src: e, label: "Weekly Morning Yoga & Prayer Assembly", category: "Activities" },
-  { src: d, label: "Art Studio Craft & Drawing Class", category: "Activities" },
-  { src: f, label: "Reference Library Study Hall", category: "Campus" },
-  { src: g, label: "Digital Learning & IT Computer Room", category: "Campus" },
+  { src: hscResult, label: "GSEB HSC 12th Board Result Merit List", category: "Board Results", guj: "એચ.એસ.સી. ૧૨મું બોર્ડ પરિણામ" },
+  { src: sscResult, label: "GSEB SSC 10th Board Result Toppers", category: "Board Results", guj: "એસ.એસ.સી. ૧૦મું બોર્ડ પરિણામ" },
+  { src: heroCampus, label: "Main School Campus Hub", category: "Campus", guj: "હરિદર્શન વિદ્યા સંકુલ" },
+  { src: secondaryLabNew, label: "Secondary Wing Science Experiments & Lab", category: "Facilities", guj: "માધ્યમિક સાયન્સ લેબ (Grades 6-10)" },
+  { src: higherSecondaryClassroomNew, label: "Higher Secondary Arts & Commerce Lecture Hall", category: "Campus", guj: "ઉચ્ચતર માધ્યમિક ક્લાસરૂમ (Grades 11-12)" },
+  { src: lifeDance, label: "Annual Cultural Function Dance", category: "Activities & Events", guj: "વાર્ષિક ઉત્સવ" },
+  { src: lifeSports, label: "Annual Sports Day & Athletic Matches", category: "Sports", guj: "સ્પોર્ટ્સ ડે" },
+  { src: facilityScience, label: "Modern Practical Science Laboratory", category: "Facilities", guj: "સાયન્સ લેબોરેટરી" },
+  { src: lifeScience, label: "Experiential Science Fair & Projects", category: "Activities & Events", guj: "સાયન્સ પ્રોજેક્ટ" },
+  { src: lifeYoga, label: "Khel Mahakumbh Yogasana Excellence", category: "Sports", guj: "ખેલ મહાકુંભમાં શ્રેષ્ઠ પ્રદર્શન" },
+  { src: lifeArt, label: "No Bag Day Creative Craft & Arts", category: "Activities & Events", guj: "નો બેગ ડે" },
+  { src: facilityLibrary, label: "6000+ Books Reference Library", category: "Facilities", guj: "લાઇબ્રેરી" },
+  { src: facilityComputer, label: "Digital Learning & IT Computer Room", category: "Facilities", guj: "કોમ્પ્યુટર લેબ" },
+  { src: facilityBus, label: "Safe Transport School Bus Fleet", category: "Facilities", guj: "સ્કૂલ બસ સુવિધા" },
+  { src: aboutRealistic, label: "Smart Classroom Digital Lectures", category: "Campus", guj: "સ્માર્ટ ડિજિટલ ક્લાસરૂમ" },
+  { src: lifeScience, label: "Science Museum Visit & Exploration", category: "Field Visits", guj: "સાયન્સ મ્યુઝિયમ વિઝિટ" },
+  { src: aboutStudents, label: "Bank Visit & Financial Literacy Tour", category: "Field Visits", guj: "બેંક વિઝિટ" },
+  { src: heroCampus, label: "Factory & Industrial Exposure Visit", category: "Field Visits", guj: "ફેક્ટરી વિઝિટ" },
+  { src: lifeArt, label: "Farm & Agricultural Nature Visit", category: "Field Visits", guj: "ફાર્મ વિઝિટ" },
+  { src: lifeYoga, label: "Nursery & Botanical Nature Tour", category: "Field Visits", guj: "નર્સરી વિઝિટ" },
+  { src: lifeDance, label: "Festival Celebrations & Cultural Unity", category: "Activities & Events", guj: "તહેવારોની ઉજવણી" },
+  { src: aboutStudents, label: "Bal Maheman Student Hospitality Scheme", category: "Activities & Events", guj: "બાલ મહેમાન યોજના" },
 ];
 
 export const Route = createFileRoute("/gallery")({
@@ -33,7 +55,7 @@ export const Route = createFileRoute("/gallery")({
       {
         name: "description",
         content:
-          "Moments from campus life — classrooms, sports, culture, science and celebrations.",
+          "Photo gallery of campus life, field visits, sports day, science fair, bank visits, factory trips, and cultural events.",
       },
       { property: "og:url", content: "/gallery" },
     ],
@@ -63,55 +85,60 @@ function GalleryPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Campus Life"
-        title="Moments from our vibrant campus."
-        subtitle="A snapshot glance into everyday study periods, annual sports matches, cultural activities, and student achievements."
+        eyebrow="Campus Life & Experiential Activities"
+        title="Moments from our vibrant campus & field trips."
+        subtitle="Snapshots of classroom learning, bank visits, science museum tours, sports day, No Bag Day, and annual cultural celebrations."
+        bgImage={galleryHeaderBg}
       />
 
-      <section className="section-pad animate-fade-up">
+      <section className="section-pad">
         <div className="container-page">
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => {
-                  setActiveCat(cat);
-                  setLightboxIdx(null); // Reset lightbox on filter change
-                }}
-                className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
-                  activeCat === cat
-                    ? "bg-primary text-cream shadow-[var(--shadow-glow)]"
-                    : "bg-cream-deep text-foreground hover:bg-border"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+          <ScrollReveal variant="fade-up">
+            <div className="flex flex-wrap justify-center gap-2 mb-12">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setActiveCat(cat);
+                    setLightboxIdx(null);
+                  }}
+                  className={`px-5 py-2.5 rounded-full text-sm font-bold transition-all duration-300 ${
+                    activeCat === cat
+                      ? "bg-primary text-cream shadow-[var(--shadow-glow)]"
+                      : "bg-cream-deep text-foreground hover:bg-border"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
 
-          {/* Masonry / Grid Layout */}
+          {/* Grid Layout */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {filteredTiles.map((t, idx) => (
-              <button
-                key={idx}
-                onClick={() => setLightboxIdx(idx)}
-                className="group relative overflow-hidden rounded-3xl aspect-[4/3] border border-border shadow-[var(--shadow-soft)] focus:outline-none focus:ring-2 focus:ring-primary/50 text-left w-full"
-              >
-                <img
-                  src={t.src}
-                  alt={t.label}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-5 left-5 right-5 text-cream translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="text-[10px] uppercase tracking-widest text-accent font-bold bg-accent/20 px-2 py-0.5 rounded">
-                    {t.category}
-                  </span>
-                  <div className="font-display font-extrabold text-lg mt-2">{t.label}</div>
-                </div>
-              </button>
+              <ScrollReveal key={idx} variant="fade-up" staggerIndex={idx} staggerStep={70}>
+                <button
+                  onClick={() => setLightboxIdx(idx)}
+                  className="group relative overflow-hidden rounded-3xl aspect-[4/3] border border-border shadow-[var(--shadow-soft)] focus:outline-none focus:ring-2 focus:ring-primary/50 text-left w-full"
+                >
+                  <img
+                    src={t.src}
+                    alt={t.label}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-5 left-5 right-5 text-cream translate-y-3 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="text-[10px] uppercase tracking-widest text-accent font-bold bg-accent/20 px-2 py-0.5 rounded">
+                      {t.category}
+                    </span>
+                    <div className="font-display font-extrabold text-lg mt-1">{t.label}</div>
+                    <div className="font-gujarati text-xs text-accent/90">{t.guj}</div>
+                  </div>
+                </button>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -152,7 +179,7 @@ function GalleryPage() {
           {/* Main Image View */}
           <div
             className="relative max-w-4xl max-h-[85vh] flex flex-col items-center"
-            onClick={(e) => e.stopPropagation()} // Stop propagation to prevent closing
+            onClick={(e) => e.stopPropagation()}
           >
             <img
               src={filteredTiles[lightboxIdx].src}
@@ -160,7 +187,7 @@ function GalleryPage() {
               className="max-w-full max-h-[75vh] object-contain rounded-3xl border border-cream/10 shadow-[var(--shadow-elegant)] bg-ink"
             />
             <div className="mt-4 bg-ink/80 backdrop-blur-md px-6 py-3 rounded-2xl text-cream text-sm font-bold border border-cream/10 text-center shadow-lg">
-              {filteredTiles[lightboxIdx].label} ·{" "}
+              {filteredTiles[lightboxIdx].label} ({filteredTiles[lightboxIdx].guj}) ·{" "}
               <span className="text-accent">{filteredTiles[lightboxIdx].category}</span>
             </div>
           </div>
