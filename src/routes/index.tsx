@@ -171,8 +171,7 @@ function HeroSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/School_drone_shot_cinematic_move._202607040242.MOV" type="video/mp4" />
-        <source src="/School_drone_shot_cinematic_move._202607040242.MOV" type="video/quicktime" />
+        <source src="/hero-drone-bg.mp4" type="video/mp4" />
       </video>
 
       <div
