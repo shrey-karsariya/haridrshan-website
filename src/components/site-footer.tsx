@@ -117,7 +117,19 @@ export function SiteFooter() {
           <div>
             © {new Date().getFullYear()} Shree Haridarshan Vidya Sankul. All rights reserved.
           </div>
-          <div className="flex gap-5">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>
+              Developed by{" "}
+              <a
+                href="https://wa.me/918200712955"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-bold text-accent hover:underline hover:text-cream transition-colors"
+              >
+                matrixtechx
+              </a>
+            </span>
+            <span className="hidden sm:inline">•</span>
             <Link to="/privacy" className="hover:text-cream">
               Privacy Policy
             </Link>
