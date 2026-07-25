@@ -43,7 +43,8 @@ export function SiteHeader() {
           scrolled ? "h-0 opacity-0" : "h-9 opacity-100"
         }`}
       >
-        <div className="container-page flex items-center justify-between h-9">
+        {/* Desktop View */}
+        <div className="hidden md:flex container-page items-center justify-between h-9">
           <div className="flex items-center gap-2 whitespace-nowrap">
             <span className="bg-accent text-accent-foreground text-[10px] font-extrabold px-2 py-0.5 rounded tracking-wider uppercase">
               Admissions Open
@@ -53,11 +54,43 @@ export function SiteHeader() {
               (Arts & Commerce) for 2026-27
             </span>
           </div>
-          <div className="hidden md:flex items-center gap-4 text-cream/80 font-medium">
-            <span>📞 +91 94278 82733</span>
+          <div className="flex items-center gap-4 text-cream/90 font-medium">
+            <a href="tel:+919427882733" className="hover:text-accent transition-colors">
+              📞 +91 94278 82733
+            </a>
             <span>📍 Mavdi Bypass, Rajkot</span>
           </div>
         </div>
+
+        {/* Mobile View Ticker */}
+        <div className="md:hidden flex items-center h-9 w-full overflow-hidden relative">
+          <div className="flex w-max animate-ribbon-ticker whitespace-nowrap items-center gap-6 text-cream/95 text-[11px] font-medium px-2">
+            {[1, 2].map((k) => (
+              <div key={k} className="flex items-center gap-3">
+                <span className="bg-accent text-accent-foreground text-[10px] font-extrabold px-2 py-0.5 rounded tracking-wider uppercase">
+                  Admissions Open
+                </span>
+                <span className="font-semibold flex items-center gap-1">
+                  <Sparkles className="h-3 w-3 text-accent animate-pulse" /> STD: Playgroup to 12th (Arts & Commerce) for 2026-27
+                </span>
+                <span className="text-accent/60">•</span>
+                <a href="tel:+919427882733" className="font-semibold hover:text-accent">📞 +91 94278 82733</a>
+                <span className="text-accent/60">•</span>
+                <span className="font-semibold">📍 Mavdi Bypass, Rajkot</span>
+                <span className="text-accent/60 mr-3">✦</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          @keyframes ribbonTicker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-ribbon-ticker {
+            animation: ribbonTicker 16s linear infinite;
+          }
+        `}</style>
       </div>
 
       <div className="container-page flex items-center justify-between h-20">

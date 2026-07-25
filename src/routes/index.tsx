@@ -171,7 +171,8 @@ function HeroSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/School_drone_shot_cinematic_move._202607040242.mp4" type="video/mp4" />
+        <source src="/School_drone_shot_cinematic_move._202607040242.MOV" type="video/mp4" />
+        <source src="/School_drone_shot_cinematic_move._202607040242.MOV" type="video/quicktime" />
       </video>
 
       <div
@@ -284,7 +285,40 @@ function AboutSection() {
   return (
     <section className="section-pad">
       <div className="container-page grid gap-14 lg:grid-cols-2 items-center">
-        <ScrollReveal variant="slide-left">
+        {/* Text Block - First on Mobile, Second on Desktop */}
+        <ScrollReveal variant="slide-right" delay={150} className="order-1 lg:order-2">
+          <div className="space-y-6">
+            <span className="eyebrow">
+              <span className="h-px w-8 bg-primary" /> Established in 2000 · Affordable Quality Education
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold text-foreground leading-tight">
+              Nurturing academic intelligence with lifelong character values.
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Since the year 2000, Shree Haridarshan Vidya Sankul has been serving continuously in the
+              field of education at <strong>very affordable/reasonable fees</strong>. Our team of
+              well-qualified, subject-expert, and highly experienced teachers dedicate personal time to
+              weaker students, providing customized study along with regular subject-wise Unit Tests
+              and Mega Tests.
+            </p>
+            <p className="text-muted-foreground leading-relaxed">
+              Equipped with a vast <strong>6000+ books library</strong>, modern media room, high-speed
+              computer lab, and science workbenches, we create an encouraging environment for the
+              holistic development of every child.
+            </p>
+            <div className="pt-2">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-cream transition-all duration-300 shadow-sm"
+              >
+                Learn More About Our Journey <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </ScrollReveal>
+
+        {/* Photo Slider Block - Second on Mobile, First on Desktop */}
+        <ScrollReveal variant="slide-left" className="order-2 lg:order-1">
           <div className="relative">
             <div className="absolute -top-6 -left-6 h-40 w-40 rounded-3xl bg-accent/20 -z-10" />
             <div className="absolute -bottom-6 -right-6 h-52 w-52 rounded-full bg-primary/15 -z-10" />
@@ -329,37 +363,6 @@ function AboutSection() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </ScrollReveal>
-
-        <ScrollReveal variant="slide-right" delay={150}>
-          <div className="space-y-6">
-            <span className="eyebrow">
-              <span className="h-px w-8 bg-primary" /> Established in 2000 · Affordable Quality Education
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-extrabold text-foreground leading-tight">
-              Nurturing academic intelligence with lifelong character values.
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Since the year 2000, Shree Haridarshan Vidya Sankul has been serving continuously in the
-              field of education at <strong>very affordable/reasonable fees</strong>. Our team of
-              well-qualified, subject-expert, and highly experienced teachers dedicate personal time to
-              weaker students, providing customized study along with regular subject-wise Unit Tests
-              and Mega Tests.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Equipped with a vast <strong>6000+ books library</strong>, modern media room, high-speed
-              computer lab, and science workbenches, we create an encouraging environment for the
-              holistic development of every child.
-            </p>
-            <div className="pt-2">
-              <Link
-                to="/about"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-cream transition-all duration-300 shadow-sm"
-              >
-                Learn More About Our Journey <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
           </div>
         </ScrollReveal>
@@ -691,11 +694,11 @@ function ExperientialActivitiesSection() {
           {activities.map((act, i) => (
             <ScrollReveal key={i} variant="fade-up" staggerIndex={i} staggerStep={90}>
               <div className="bg-card rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-soft)] hover:border-primary/30 transition-all duration-300 group flex flex-col justify-between h-full">
-                <div className="h-44 w-full relative overflow-hidden bg-muted">
+                <div className="h-48 sm:h-52 w-full relative overflow-hidden bg-muted">
                   <img
                     src={act.image}
                     alt={act.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-3 left-3 bg-ink/75 backdrop-blur-md text-accent text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md border border-white/10">
                     Activity {i + 1}
@@ -1102,7 +1105,8 @@ function Testimonials() {
           </div>
         </ScrollReveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        {/* Desktop Grid View */}
+        <div className="mt-14 hidden md:grid gap-6 md:grid-cols-3">
           {testimonials.map((t, idx) => (
             <ScrollReveal key={t.name} variant="fade-up" staggerIndex={idx} staggerStep={120}>
               <figure className="card-lift bg-card rounded-3xl p-8 border border-border relative hover:border-primary/10 shadow-[var(--shadow-soft)] flex flex-col justify-between h-full">
@@ -1134,6 +1138,55 @@ function Testimonials() {
             </ScrollReveal>
           ))}
         </div>
+
+        {/* Mobile Horizontal Auto-scrolling Slider */}
+        <div className="mt-10 md:hidden relative w-full overflow-hidden py-2">
+          <div className="flex w-max animate-testimonial-marquee gap-5">
+            {[...testimonials, ...testimonials, ...testimonials].map((t, idx) => (
+              <figure
+                key={idx}
+                className="w-80 shrink-0 bg-card rounded-3xl p-6 border border-border relative shadow-[var(--shadow-soft)] flex flex-col justify-between"
+              >
+                <Quote className="h-8 w-8 text-primary/10 absolute top-5 right-5" />
+                <div>
+                  <div className="flex text-accent gap-1">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <blockquote className="mt-4 text-xs text-foreground/80 leading-relaxed italic">
+                    "{t.quote}"
+                  </blockquote>
+                </div>
+                <figcaption className="mt-6 flex items-center gap-3 pt-4 border-t border-border">
+                  <div className="h-9 w-9 rounded-full bg-primary/10 text-primary flex items-center justify-center font-display font-extrabold text-xs border border-primary/20">
+                    {t.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .slice(0, 2)
+                      .join("")}
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-foreground text-xs">{t.name}</div>
+                    <div className="text-[11px] text-muted-foreground font-semibold">{t.student}</div>
+                  </div>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+        <style>{`
+          @keyframes testimonialMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.333333%); }
+          }
+          .animate-testimonial-marquee {
+            animation: testimonialMarquee 22s linear infinite;
+          }
+          .animate-testimonial-marquee:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
 
         {/* Working Google Review CTA Card */}
         <ScrollReveal variant="fade-up" delay={200}>
